@@ -1,0 +1,213 @@
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.produtos {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.produto {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.produto img {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    object-fit: contain;
+}
+
+.dados {
+    flex: 1;
+    align-self: flex-start;
+}
+
+.dados label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.dados input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.flag-container .flag {
+    /* Estilos comuns para todos os botões */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    flex: 1;
+    margin: 0;
+    transition: background-color 0.3s ease;
+    color: white; /* Cor do texto branca por padrão */
+}
+
+/* Estilo para o botão "Sim" */
+.flag-container .true {
+    background-color: #ccc; /* Cinza claro quando não selecionado */
+    color: black;
+}
+
+.flag-container .true.selecionado {
+    background-color: #4CAF50; /* Verde quando selecionado */
+}
+
+/* Estilo para o botão "Não" */
+.flag-container .false {
+    background-color: #f44336; /* Vermelho quando não selecionado */
+}
+
+.flag-container .false.selecionado {
+    background-color: #ccc; /* Cinza claro quando selecionado */
+    color: black;
+}
+
+.value {
+    font-size: 16px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.relatorio {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 350px;
+    min-height: 0;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.relatorio-produto {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custos-servicos {
+    display: flex; /* ou 'grid' dependendo da sua preferência de layout */
+    flex-direction: column; /* Define a direção para coluna */
+    gap: 30px; /* Adiciona espaço entre os elementos */
+}
+
+.custo {
+    display: flex; /* Se você quiser alinhar a imagem e o input */
+    align-items: center; /* Alinha verticalmente */
+    gap: 30px; /* Espaço entre imagem e input */
+    width: 100%; /* Ocupa toda a largura disponível*/
+}
+
+.custo img {
+    width: 150px; /* Define o tamanho da imagem */
+    height: 150px; /* Define o tamanho da imagem */
+    object-fit: contain; /* Mantém a proporção da imagem */
+}
+
+.custo .dados {
+   width: 100%;
+}
+
+.custo-geral label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.custo-geral input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.produto button[disabled], .custo button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+    background-color: #eee;
+}
+
+.produto-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.produto-info img {
+    margin-right: 10px;
+}
+
+.nome-produto {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.safra { /*  Estilos para cada safra individual */
+    border: 1px solid #ddd; /* Borda mais clara */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+}
+
+.titulo-safra {
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}

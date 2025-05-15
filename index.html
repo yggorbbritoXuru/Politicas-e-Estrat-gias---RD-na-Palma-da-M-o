@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Financeira para Pequenos Agricultores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1>Gestão Financeira para Pequenos Agricultores</h1>
+
+    <div class="pergunta-safra">
+        <p>A colheita foi feita em uma única safra?</p>
+        <div class="flag-container">
+            <button class="flag true" onclick="setUnicaSafra(true)">Sim</button>
+            <button class="flag false" onclick="setUnicaSafra(false)">Não</button>
+        </div>
+        <div id="unica-safra" class="value" data-valor="false"></div>
+    </div>
+
+    <div class="pergunta-custo">
+        <p>Você sabe o custo de produção unitário de cada produto?</p>
+        <div class="flag-container">
+            <button class="flag true" onclick="setSabeCustoUnitario(true)">Sim</button>
+            <button class="flag false" onclick="setSabeCustoUnitario(false)">Não</button>
+        </div>
+        <div id="sabe-custo-unitario" class="value" data-valor="false"></div>
+        <div style="margin-top: 30px;"></div>
+    </div>
+
+    <div class="container">
+        <div class="produtos">
+            </div>
+        <div class="relatorio" id="relatorio-geral">
+            <p>Prezado Produtor,</p>
+            <div id="detalhes-relatorio"></div>
+            <div class="custo-geral" id="custo-geral" style="display: none;">
+            <h2 style="color: rgb(0, 0, 0);">Custo Geral</h2>
+            <label for="valor-custo-geral" style="color: red; margin-bottom: 10px; display: block; font-size: 1.2em;">Valor do Custo Geral: <br>R$ </label>
+            <input type="number" id="valor-custo-geral" value="0" style="margin-bottom: 20px; font-size: 1.2em; width: 100%; color: rgb(255, 81, 0);">
+            </div>
+            <div style="margin-top: 30px;"></div>
+            <div class="custos-servicos" id="custos-servicos" style="display: none;">
+               <h2 style="color: red;">Custos por Serviços</h2>
+            <div class = "custos">
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="chatbot">
+        <h2>Dúvidas sobre uso do aplicativo ou conceitos técnico ?</h2>
+        <select id="categoria-chatbot" onchange="popularChatbot(this.value)">
+            <option value="">Selecione uma categoria</option>
+            <option value="usabilidade">Usabilidade</option>
+            <option value="agricultura">Agricultura</option>
+        </select>
+        
+        <select id="perguntas-chatbot">
+            <option value="">Selecione uma pergunta</option>
+        </select>
+        <button onclick="enviarPerguntaChatbot()">Enviar</button>
+        <div id="resposta-chatbot"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

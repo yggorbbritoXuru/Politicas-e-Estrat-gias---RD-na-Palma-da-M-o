@@ -1,0 +1,249 @@
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 20px; /* Aumenta o tamanho da fonte */
+    line-height: 1.8; /* Melhora a legibilidade */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    background-color: #f4f4f4;
+    color: #222; /* Cor preta mais visível */
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 25px; /* Maior espaçamento */
+    font-size: 2.5em; /* Aumenta o tamanho da fonte */
+    color: #006400; /* Verde escuro */
+}
+
+.container {
+    display: flex;
+    flex-direction: row; /* Ou column, se preferir */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    gap: 20px; /* Espaçamento entre produtos e relatório */
+}
+.produtos, .custos-servicos, #relatorio-geral {
+    flex: 1; /* Distribui o espaço igualmente */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 25px; /* Aumenta o padding */
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 0; /* Evita problemas de layout */
+    margin: 0 10px; /* Adiciona espaço horizontal */
+}
+
+.produto {
+    display: flex;
+    align-items: flex-start; /* Alinha ao topo */
+    margin-bottom: 25px; /* Aumenta o espaçamento entre produtos */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px; /* Aumenta o padding inferior */
+}
+
+.produto-info {
+    display: flex;
+    flex-direction: column; /* Alinha os elementos em coluna */
+    align-items: flex-start; /* Alinha ao início */
+    margin-bottom: 15px; /* Ajusta o espaçamento */
+}
+
+.produto img {
+    width: 120px; /* Aumenta o tamanho da imagem */
+    height: auto;
+    margin-bottom: 10px; /* Adiciona espaçamento abaixo da imagem */
+}
+
+.nome-produto {
+    font-weight: bold;
+    font-size: 1.3em; /* Aumenta o tamanho da fonte */
+}
+
+.dados label {
+    display: block;
+    margin-top: 10px; /* Adiciona espaçamento acima do label */
+    font-weight: bold;
+}
+
+.dados input[type="number"] {
+    width: 100%;
+    padding: 12px; /* Aumenta o padding para ampliar a caixa */
+    margin-bottom: 15px; /* Aumenta o espaçamento inferior */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+}
+.flag-container .flag {
+    /* Estilos padrão para todos os botões */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    flex: 1;
+    margin: 0;
+    transition: background-color 0.3s ease;
+    color: white; /* Cor do texto branca por padrão */
+}
+
+.flag-container .true { /* Botão "Sim" - NÃO selecionado */
+    background-color: #ccc; /* Cinza */
+    color: black; /* Texto preto */
+}
+.flag-container .true.selecionado { /* Botão "Sim" - SELECIONADO */
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Garante que o texto fique branco */
+}
+
+.flag-container .false { /* Botão "Não" - NÃO selecionado */
+    background-color: #ddd; /* Cinza */
+    color: black; /* Texto preto */
+}
+.flag-container .false.selecionado { /* Botão "Não" - SELECIONADO */
+    background-color: #f44336; /* Vermelho */
+    color: white; /* Garante que o texto fique branco */
+}
+
+/* Estilo para o texto de exibição (Sim/Não) */
+.value { /* Estilos comuns para o texto */
+    font-size: 16px;
+    margin-top: 5px;
+    text-align: center;
+}
+.value.true { color: #4CAF50; } /* Verde */
+.value.false { color: #f44336; } /* Vermelho */
+
+.safra {
+    border: 1px solid #ddd;
+    padding: 20px; /* Aumenta o padding */
+    margin-bottom: 15px; /* Aumenta o espaçamento inferior */
+    border-radius: 5px;
+}
+
+.titulo-safra {
+    font-weight: bold;
+    margin-bottom: 15px; /* Aumenta o espaçamento inferior */
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+}
+
+/* Estilos para o relatório */
+#relatorio-geral,
+.relatorio-produto {
+    font-size: 1.1em; /* Aumenta o tamanho da fonte */
+}
+
+/* Estilos para custos de serviços */
+.custos-servicos {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Aumenta o espaçamento entre os itens */
+}
+
+.custo {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 25px; /* Aumenta o espaçamento entre os elementos */
+    margin-bottom: 25px; /* Aumenta o espaçamento inferior */
+    border-bottom: 1px solid #eee;
+}
+
+.custo img {
+    width: 120px; /* Aumenta o tamanho da imagem */
+    height: auto;
+    margin-right: 20px; /* Aumenta o espaçamento à direita da imagem */
+}
+
+.custo .dados label {
+    margin-bottom: 10px; /* Aumenta o espaçamento inferior */
+    font-size: 1.1em; /* Aumenta o tamanho da fonte */
+}
+
+.custo .dados input[type="number"] {
+    width: 100%;
+    padding: 12px; /* Aumenta o padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+}
+
+.custo-geral { /* Para alinhar o label e o input */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Aumenta o espaçamento entre os elementos */
+}
+
+
+#chatbot {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center; /* Centraliza horizontalmente os elementos dentro do chatbot */
+    font-size: 1.5em; /* Aumenta o tamanho da fonte */
+    visibility: visible; /* Garante que o elemento esteja visível */
+}
+
+#chatbot select,
+#chatbot input[type="text"] {
+    font-size: 1.4em; /* Aumenta o tamanho da fonte */
+    line-height: 1.8;
+    width: 100%; /* ou uma largura fixa, se preferir */
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+#chatbot button {
+    font-size: 1.3em; /* Aumenta o tamanho da fonte */
+    padding: 14px 28px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+#chatbot button:hover {
+    background-color: #45a049;
+}
+
+#resposta-chatbot {
+    margin-top: 20px;  /* Adiciona espaço acima da resposta */
+    font-size: 1.3em; /* Aumenta a fonte da resposta */
+}
+
+/* Estilo para o botão "Gerar Relatório" */
+.produto button,  /* Seletor para todos os botões dentro de .produto */
+.custos button {   /* Seletor para todos os botões dentro de .custos, se houver */
+    font-size: 1.1em; /* Aumenta o tamanho da fonte */
+    padding: 12px 20px;  /* Aumenta o padding (espaçamento interno) */
+    background-color: #4CAF50; /* Cor de fundo verde (opcional) */
+    color: white;  /* Cor do texto branca (opcional) */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/*  Estilo para o botão desabilitado */
+.produto button[disabled],
+.custos button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+    background-color: #eee; /* Cor de fundo cinza claro quando desabilitado */
+}
