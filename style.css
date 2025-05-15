@@ -7,243 +7,292 @@
 
 body {
     font-family: sans-serif;
-    font-size: 20px; /* Aumenta o tamanho da fonte */
-    line-height: 1.8; /* Melhora a legibilidade */
+    font-size: 16px; /* Tamanho de fonte base menor para melhor responsividade */
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: center;
     background-color: #f4f4f4;
-    color: #222; /* Cor preta mais visível */
-    padding: 20px;
+    color: #333;
+    padding: 1rem; /* Unidades rem para melhor acessibilidade */
 }
 
 h1, h2 {
     text-align: center;
-    margin-bottom: 25px; /* Maior espaçamento */
-    font-size: 2.5em; /* Aumenta o tamanho da fonte */
+    margin-bottom: 1.5rem;
     color: #006400; /* Verde escuro */
 }
 
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+
 .container {
     display: flex;
-    flex-direction: row; /* Ou column, se preferir */
-    width: 90%;
+    flex-direction: column; /* Começa com layout em coluna para telas menores */
+    width: 95%; /* Largura mais adaptável */
     max-width: 1200px;
-    margin: 0 auto 20px;
-    gap: 20px; /* Espaçamento entre produtos e relatório */
+    margin: 0 auto;
+    gap: 1rem;
 }
+
+
+
+@media (min-width: 768px) { /* Layout em linha para telas maiores */
+    .container {
+        flex-direction: row;
+    }
+     .produtos, .custos-servicos, #relatorio-geral {
+        flex: 1;
+     }
+
+
+}
+
 .produtos, .custos-servicos, #relatorio-geral {
-    flex: 1; /* Distribui o espaço igualmente */
+
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 25px; /* Aumenta o padding */
+    padding: 1.5rem;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    min-height: 0; /* Evita problemas de layout */
-    margin: 0 10px; /* Adiciona espaço horizontal */
+     overflow: auto;
+
+
 }
+
 
 .produto {
     display: flex;
-    align-items: flex-start; /* Alinha ao topo */
-    margin-bottom: 25px; /* Aumenta o espaçamento entre produtos */
+    flex-direction: column; /* Itens da .produto em coluna */
+    margin-bottom: 1.5rem;
     border-bottom: 1px solid #eee;
-    padding-bottom: 25px; /* Aumenta o padding inferior */
+    padding-bottom: 1rem;
+    gap: 1rem;
+
 }
+
+
 
 .produto-info {
     display: flex;
-    flex-direction: column; /* Alinha os elementos em coluna */
-    align-items: flex-start; /* Alinha ao início */
-    margin-bottom: 15px; /* Ajusta o espaçamento */
+    align-items: center; /* Alinha verticalmente */
+    gap: 1rem;
 }
 
 .produto img {
-    width: 120px; /* Aumenta o tamanho da imagem */
+    max-width: 100%; /* Impede que a imagem ultrapasse o container */
     height: auto;
-    margin-bottom: 10px; /* Adiciona espaçamento abaixo da imagem */
+    display: block; /* Remove espaço em branco abaixo da imagem */
 }
 
 .nome-produto {
     font-weight: bold;
-    font-size: 1.3em; /* Aumenta o tamanho da fonte */
+    font-size: 1.2em;
 }
+
+/* Campos de input */
 
 .dados label {
     display: block;
-    margin-top: 10px; /* Adiciona espaçamento acima do label */
+    margin-bottom: 0.5rem;
     font-weight: bold;
 }
 
 .dados input[type="number"] {
     width: 100%;
-    padding: 12px; /* Aumenta o padding para ampliar a caixa */
-    margin-bottom: 15px; /* Aumenta o espaçamento inferior */
+    padding: 0.5rem;
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1.2em; /* Aumenta o tamanho da fonte */
 }
-.flag-container .flag {
-    /* Estilos padrão para todos os botões */
-    padding: 10px 20px;
-    font-size: 16px;
+
+/* Botões Sim/Não */
+.flag-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.flag {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     flex: 1;
-    margin: 0;
+    color: white;
     transition: background-color 0.3s ease;
-    color: white; /* Cor do texto branca por padrão */
 }
 
-.flag-container .true { /* Botão "Sim" - NÃO selecionado */
-    background-color: #ccc; /* Cinza */
-    color: black; /* Texto preto */
-}
-.flag-container .true.selecionado { /* Botão "Sim" - SELECIONADO */
-    background-color: #4CAF50; /* Verde */
-    color: white; /* Garante que o texto fique branco */
-}
+.flag.true { background-color: #ccc; color: black;}
+.flag.true.selecionado { background-color: #4CAF50; }
 
-.flag-container .false { /* Botão "Não" - NÃO selecionado */
-    background-color: #ddd; /* Cinza */
-    color: black; /* Texto preto */
-}
-.flag-container .false.selecionado { /* Botão "Não" - SELECIONADO */
-    background-color: #f44336; /* Vermelho */
-    color: white; /* Garante que o texto fique branco */
-}
+.flag.false { background-color: #ddd; color: black; }
+.flag.false.selecionado { background-color: #f44336; }
 
-/* Estilo para o texto de exibição (Sim/Não) */
-.value { /* Estilos comuns para o texto */
-    font-size: 16px;
-    margin-top: 5px;
+.value {
+    font-size: 1rem;
+    margin-top: 0.5rem;
     text-align: center;
 }
-.value.true { color: #4CAF50; } /* Verde */
-.value.false { color: #f44336; } /* Vermelho */
+
+.value.true { color: #4CAF50; }
+.value.false { color: #f44336; }
 
 .safra {
     border: 1px solid #ddd;
-    padding: 20px; /* Aumenta o padding */
-    margin-bottom: 15px; /* Aumenta o espaçamento inferior */
+    padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 5px;
 }
 
 .titulo-safra {
     font-weight: bold;
-    margin-bottom: 15px; /* Aumenta o espaçamento inferior */
-    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+    margin-bottom: 0.5rem;
+    font-size: 1.1em;
 }
 
-/* Estilos para o relatório */
+/* Relatório */
 #relatorio-geral,
 .relatorio-produto {
-    font-size: 1.1em; /* Aumenta o tamanho da fonte */
+    font-size: 1rem;
 }
 
-/* Estilos para custos de serviços */
+
+/* Custos de Serviços */
 .custos-servicos {
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Aumenta o espaçamento entre os itens */
+    gap: 1.5rem;
 }
 
 .custo {
     display: flex;
+    flex-direction: column; /* Elementos da .custo em coluna para telas menores */
+    align-items: flex-start;
+    gap: 1rem;
+    border-bottom: 1px solid #eee; /* Separação visual entre custos */
+    padding-bottom: 1rem;
+
+
+}
+@media (min-width: 768px) { /* Layout em linha para telas maiores */
+  .custo {
+    flex-direction: row; /* Elementos em linha para telas maiores */
     align-items: center; /* Centraliza verticalmente */
-    gap: 25px; /* Aumenta o espaçamento entre os elementos */
-    margin-bottom: 25px; /* Aumenta o espaçamento inferior */
-    border-bottom: 1px solid #eee;
+  }
+
 }
 
 .custo img {
-    width: 120px; /* Aumenta o tamanho da imagem */
+    max-width: 100px; /* Largura máxima */
     height: auto;
-    margin-right: 20px; /* Aumenta o espaçamento à direita da imagem */
+    margin-bottom: 1rem; /* Espaçamento inferior apenas em telas menores */
 }
 
+@media (min-width: 768px) {
+    .custo img {
+        margin-bottom: 0; /* Remove a margem inferior em telas maiores */
+        margin-right: 1rem;
+    }
+}
+
+
 .custo .dados label {
-    margin-bottom: 10px; /* Aumenta o espaçamento inferior */
-    font-size: 1.1em; /* Aumenta o tamanho da fonte */
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .custo .dados input[type="number"] {
     width: 100%;
-    padding: 12px; /* Aumenta o padding */
+    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1.2em; /* Aumenta o tamanho da fonte */
 }
 
-.custo-geral { /* Para alinhar o label e o input */
+.custo-geral {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Aumenta o espaçamento entre os elementos */
+    gap: 0.5rem;
 }
 
-
+/* Chatbot */
 #chatbot {
-    margin-top: 40px;
-    padding: 20px;
+    margin-top: 2rem;
+    padding: 1.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    text-align: center; /* Centraliza horizontalmente os elementos dentro do chatbot */
-    font-size: 1.5em; /* Aumenta o tamanho da fonte */
-    visibility: visible; /* Garante que o elemento esteja visível */
+    text-align: center;
 }
 
 #chatbot select,
 #chatbot input[type="text"] {
-    font-size: 1.4em; /* Aumenta o tamanho da fonte */
-    line-height: 1.8;
-    width: 100%; /* ou uma largura fixa, se preferir */
-    padding: 14px;
-    margin-bottom: 15px;
-    border: 2px solid #4CAF50;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem; /* Tamanho de fonte normal */
 }
 
 #chatbot button {
-    font-size: 1.3em; /* Aumenta o tamanho da fonte */
-    padding: 14px 28px;
+    padding: 0.5rem 1rem;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+    transition: background-color 0.3s ease;
 }
-
 #chatbot button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Cor mais escura ao passar o mouse */
 }
 
 #resposta-chatbot {
-    margin-top: 20px;  /* Adiciona espaço acima da resposta */
-    font-size: 1.3em; /* Aumenta a fonte da resposta */
+    margin-top: 1rem;
 }
 
-/* Estilo para o botão "Gerar Relatório" */
-.produto button,  /* Seletor para todos os botões dentro de .produto */
-.custos button {   /* Seletor para todos os botões dentro de .custos, se houver */
-    font-size: 1.1em; /* Aumenta o tamanho da fonte */
-    padding: 12px 20px;  /* Aumenta o padding (espaçamento interno) */
-    background-color: #4CAF50; /* Cor de fundo verde (opcional) */
-    color: white;  /* Cor do texto branca (opcional) */
+/* Botão "Gerar Relatório" */
+.produto button, .custos button {
+    font-size: 1.1em;
+    padding: 0.8em 1.2em; /* Padding ajustado */
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.produto button[disabled], .custos button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+    background-color: #eee;
 }
 
 
-/*  Estilo para o botão desabilitado */
-.produto button[disabled],
-.custos button[disabled] {
-    opacity: 0.6;
-    cursor: default;
-    background-color: #eee; /* Cor de fundo cinza claro quando desabilitado */
+
+/* Media Queries para Responsividade */
+
+
+@media (max-width: 600px) {
+
+
+    .flag-container {
+      flex-direction: column; /* Botões Sim/Não em coluna */
+    }
+
+    .flag {
+      width: 100%; /* Botões ocupam toda a largura */
+       box-sizing: border-box;
+    }
+
 }

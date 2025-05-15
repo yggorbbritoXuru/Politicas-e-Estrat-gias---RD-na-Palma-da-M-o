@@ -50,17 +50,72 @@ const custosServicos = {
 };
 
 const respostasChatbot = {
+    "rcd":[
+        { pergunta: "O que é RCD?", resposta: "RCD significa Receita, Custos e Despesas. É o nome do nosso aplicativo para Gestão Financeira de Produtores." },
+    ],
     "usabilidade": [
         { pergunta: "Como adicionar um novo produto?", resposta: "No momento, não é possível adicionar novos produtos diretamente na interface.  Você precisará modificar o código-fonte para incluir novos produtos." },
         // ... (outras perguntas e respostas de usabilidade)
     ],
     "agricultura": [
-        { pergunta: "O que é uma safra?", resposta: "Uma safra é o período em que um determinado produto é cultivado e colhido. Pode haver uma ou mais safras por ano, dependendo do produto e das condições climáticas." },
-        // ... (outras perguntas e respostas de agricultura)
+        { pergunta: "O que é uma safra?", resposta: "Uma safra é o período em que um produto agrícola é plantado, cultivado e colhido. Por exemplo, a safra do milho pode acontecer uma ou duas vezes por ano, dependendo do clima e da região." },
+        { pergunta: "O que significa custo unitário?", resposta: "Custo unitário é quanto custa produzir uma unidade do seu produto, como um quilo de tomate ou uma cabeça de alface." },
+        { pergunta: "Como calcular o custo unitário?", resposta: "Divida o custo total de produção pela quantidade produzida. Por exemplo, se gastou R$ 1.000 para produzir 500 kg de tomate, o custo unitário é R$ 2,00 por kg." },
+        { pergunta: "O que são custos de insumos? (Exemplos?)", resposta: "São os gastos com sementes, mudas, fertilizantes, defensivos e outros produtos usados no plantio e cultivo." },
+        { pergunta: "O que são custos de produção? (O que inclui?)", resposta: "Incluem todos os gastos para produzir o alimento, como água, energia, mão de obra, manutenção de máquinas e equipamentos." },
+        { pergunta: "O que são custos de infraestrutura? (Exemplos?)", resposta: "São os custos com estruturas físicas, como estufas, galpões, sistemas de irrigação e cercas." },
+        { pergunta: "O que são custos de transporte? (O que considerar?)", resposta: "São os gastos para levar o produto até o mercado ou comprador, como combustível, manutenção do veículo e frete." },
+        { pergunta: "O que são custos administrativos? (Exemplos?)", resposta: "Incluem despesas com escritório, telefone, internet, contabilidade e outros serviços de apoio à produção." },
+        { pergunta: "O que são custos de mão de obra? (O que inclui?)", resposta: "São os pagamentos feitos para quem trabalha na produção, como salários, diárias e encargos trabalhistas." },
+        { pergunta: "O que são custos indiretos? (Exemplos?)", resposta: "São gastos que não estão ligados diretamente à produção, como impostos, taxas, seguros e depreciação de máquinas." },
+        { pergunta: "O que é faturamento?", resposta: "É o valor total recebido com a venda dos produtos, antes de descontar os custos." },
+        { pergunta: "Como calcular o faturamento?", resposta: "Multiplique a quantidade vendida pelo preço de venda. Por exemplo, 100 kg de tomate vendidos a R$ 3,00 por kg resultam em R$ 300 de faturamento." },
+        { pergunta: "O que é lucro?", resposta: "É o dinheiro que sobra depois de pagar todos os custos de produção. Lucro = faturamento - custos." },
+        { pergunta: "Como calcular o lucro?", resposta: "Subtraia o custo total do faturamento. Por exemplo, se faturou R$ 1.000 e gastou R$ 700, o lucro é R$ 300." },
+        { pergunta: "O que é margem de lucro?", resposta: "É a porcentagem do faturamento que representa o lucro. Mostra quanto você ganha em relação ao que vendeu." },
+        { pergunta: "Como calcular a margem de lucro?", resposta: "Divida o lucro pelo faturamento e multiplique por 100. Exemplo: lucro de R$ 200 e faturamento de R$ 1.000, margem de lucro = (200/1000) x 100 = 20%." },
+        { pergunta: "O que é ponto de equilíbrio?", resposta: "É quando o faturamento é igual aos custos, ou seja, não há lucro nem prejuízo." },
+        { pergunta: "Como calcular o ponto de equilíbrio?", resposta: "Divida o custo total pelo preço de venda unitário. O resultado é a quantidade mínima que precisa vender para não ter prejuízo." }
+    ],
+    "servicos": [
+        { 
+            pergunta: "O que são custos de serviço?", 
+            resposta: `Custos de serviço são os gastos relacionados à prestação de serviços, como mão de obra, insumos e despesas operacionais.`
+        },
+        { 
+            pergunta: "Quais são os tipos de custos de serviço?", 
+            resposta: "Custos diretos (relacionados diretamente ao serviço) e custos indiretos (gastos gerais que suportam a operação)."
+        },
+        { 
+            pergunta: "Como calcular os custos de serviço?", 
+            resposta: "Some todos os valores gastos em cada categoria de custo durante o período analisado."
+        },
+        { 
+            pergunta: "Como reduzir os custos de serviço?", 
+            resposta: "Busque otimizar processos, negociar melhores preços com fornecedores e evitar desperdícios."
+        },
+        { 
+            pergunta: "Qual a importância de controlar os custos de serviço?", 
+            resposta: "Controlar os custos permite identificar oportunidades de economia e aumentar a lucratividade do negócio."
+        }
     ]
 };
 
+
 function popularChatbot(categoria) {
+    const select = document.getElementById('perguntas-chatbot');
+    select.innerHTML = '<option value="">Selecione uma pergunta</option>'; // Limpa as opções anteriores
+
+    respostasChatbot[categoria].forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.pergunta;
+        option.text = item.pergunta;
+        select.appendChild(option);
+    });
+}
+
+// Função para atualizar as perguntas do chatbot com base na categoria selecionada
+function atualizarPerguntasChatbot(categoria) {
     const select = document.getElementById('perguntas-chatbot');
     select.innerHTML = '<option value="">Selecione uma pergunta</option>'; // Limpa as opções anteriores
 
@@ -168,29 +223,22 @@ function setResposta(containerClass, perguntaId, valor, callback = null) {
     elementoResposta.textContent = valor ? "Sim" : "Não";
 
     botoes.forEach(botao => {
-        botao.classList.remove('selecionado'); // Remove de todos
-
-        if (botao.classList.contains(valor ? 'true' : 'false')) {
-            botao.classList.add('selecionado'); // Adiciona ao clicado
-        }
-
-        // Garante que 'true' e 'false' estejam corretos
-        botao.classList.toggle('true', valor); // 'true' apenas se o valor for true
-        botao.classList.toggle('false', !valor); // 'false' apenas se o valor for false
+        // Remove apenas 'selecionado' de todos
+        botao.classList.remove('selecionado');
     });
 
-    // Atualiza as cores imediatamente
-    const estoqueDiv = container.querySelector('.value');
-    if (estoqueDiv) {
-        estoqueDiv.textContent = valor ? "Sim" : "Não";
-        estoqueDiv.classList.toggle('true', valor);
-        estoqueDiv.classList.toggle('false', !valor);
+    // Seleciona o botão correto e aplica as classes
+    const botaoSelecionado = container.querySelector(`.flag.${valor ? 'true' : 'false'}`);
+    if (botaoSelecionado) {
+        botaoSelecionado.classList.add('selecionado', valor ? 'true' : 'false'); // Adiciona 'true' ou 'false' aqui
     }
+
 
     if (callback) {
         callback(valor);
     }
 }
+
 
 
 function calcularFaturamento(produto) {
@@ -395,8 +443,6 @@ function gerarRelatorioGeral() {
         gerarRelatorioGeral();
     });
 }
-
-
 function setEstoque(produto, estoque) {
     const estoqueDiv = document.getElementById(`estoque-${produto}`);
     estoqueDiv.dataset.estoque = estoque;
@@ -445,6 +491,8 @@ function setEstoque(produto, estoque) {
    
    
    }
+
+
    function setUnicaSafra(valor) {
     setResposta('pergunta-safra', 'unica-safra', valor, (valor) => {
         unicaSafra = valor;
@@ -460,24 +508,24 @@ function atualizarProdutos() {
         produtosHTML += criarProdutoHTML(produtos[produto]);
     }
     produtosDiv.innerHTML = produtosHTML;
-    inicializarProdutos();
 }
+
 
 function inicializarProdutos() {
     for (const produto in produtos) {
-            setEstoque(produtos[produto].nome, false);
+        setEstoque(produtos[produto].nome, false);
 
-            if (unicaSafra) {
-                document.getElementById(`quantidade-${produtos[produto].nome}`).addEventListener('input', () => calcularFaturamento(produtos[produto].nome));
-                document.getElementById(`valor-${produtos[produto].nome}`).addEventListener('input', () => calcularFaturamento(produtos[produto].nome));
-                if (sabeCustoUnitario) {
-                    document.getElementById(`custo-${produtos[produto].nome}`).addEventListener('input', () => calcularFaturamento(produtos[produto].nome));
-                }
+        // Configura os eventos de clique para os botões "Sim" e "Não"
+        const botaoSim = document.querySelector(`#produto-${produtos[produto].nome} .flag.true`);
+        const botaoNao = document.querySelector(`#produto-${produtos[produto].nome} .flag.false`);
 
-            } else {
-                adicionarSafras(produtos[produto].nome);
+        if (botaoSim && botaoNao) {
+            botaoSim.addEventListener('click', () => setEstoque(produtos[produto].nome, true));
+            botaoNao.addEventListener('click', () => setEstoque(produtos[produto].nome, false));
+        } else {
+          console.error(`Botões não encontrados para o produto ${produtos[produto].nome}`);
+        }
 
-            }
 
 
             for (let i = 1; i <= 4; i++) {
